@@ -3,11 +3,9 @@ plugins {
 	id 'org.springframework.boot' version '3.1.2'
 	id 'io.spring.dependency-management' version '1.1.2'
 	id 'checkstyle'
-	id 'org.sonarqube' version "4.3.0.3225"
 }
 
 apply plugin: 'checkstyle'
-apply plugin: 'org.sonarqube'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -43,11 +41,4 @@ checkstyle {
 	checkstyleMain.source = './'
 	checkstyleMain.exclude('**/build/**', '**/generated-sources/**')
 	checkstyleMain.include('**/*.java')
-}
-
-sonar {
-	properties {
-		property("sonar.projectKey", "sdlc-playground")
-		property("sonar.organization", "ihor-horovyi")
-	}
 }
