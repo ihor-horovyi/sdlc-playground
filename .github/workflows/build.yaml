@@ -18,9 +18,15 @@ jobs:
     
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
+
+    - name: Run checkStyleMain
+      run: ./gradlew checkStyleMain
+
+    - name: Run checkStyleTest
+      run: ./gradlew checkStyleTest
     
-    - name: Run build with Gradle Wrapper
-      run: ./gradlew build -x test
+    - name: Run build
+      run: ./gradlew build -x test -x checkStyleMain -x gradle -x checkStyleTest
 
     - name: Run tests with Gradle Wrapper
       run: ./gradlew test
