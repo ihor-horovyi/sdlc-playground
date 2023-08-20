@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.1.2'
 	id 'io.spring.dependency-management' version '1.1.2'
+	id 'checkstyle'
 }
 
 group = 'com.example'
@@ -21,6 +22,8 @@ repositories {
 	mavenCentral()
 }
 
+apply plugin: 'checkstyle'
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
@@ -30,4 +33,12 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+checkstyle {
+	toolVersion = '8.31'
+	config = rootProject.resources.text.fromFile('config/checkstyle/checkstyle.xml')
+	checkstyleMain.source = './'
+	checkstyleMain.exclude('**/build/**', '**/generated-sources/**')
+	checkstyleMain.include('**/*.java')
 }
