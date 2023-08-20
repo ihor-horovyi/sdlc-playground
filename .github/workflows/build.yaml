@@ -26,7 +26,7 @@ jobs:
       run: ./gradlew checkStyleTest
     
     - name: Run build
-      run: ./gradlew build -x test -x checkStyleMain -x gradle -x checkStyleTest
+      run: ./gradlew build -x test -x checkStyleMain -x checkStyleTest
 
     - name: Run tests with Gradle Wrapper
       run: ./gradlew test
